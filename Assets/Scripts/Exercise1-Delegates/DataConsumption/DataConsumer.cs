@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataConsumer : MonoBehaviour
@@ -18,6 +15,7 @@ public class DataConsumer : MonoBehaviour
         age = getAge(personId);
         postalCode = getPostalCode(personId);
 
+        dataReport = string.Format("name: {0}, age: {1}, postal code: {2}", name, age, postalCode);
         Debug.Log($"{name}: Giving report on Data after delegate update. {dataReport}");
     }
 }

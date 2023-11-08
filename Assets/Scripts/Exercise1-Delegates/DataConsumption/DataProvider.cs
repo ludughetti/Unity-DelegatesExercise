@@ -16,18 +16,11 @@ public class DataProvider : MonoBehaviour
     public DelegateGetName delegateGetName;
     public DelegateGetPostalCode delegateGetPostalCode;
 
-    private void OnEnable()
+    private void Start()
     {
         delegateGetAge = GetAge;
         delegateGetName = GetName;
         delegateGetPostalCode = GetPostalCode;
-    }
-
-    private void OnDisable()
-    {
-        delegateGetAge = null;
-        delegateGetName = null;
-        delegateGetPostalCode = null;
     }
 
     private int GetAge(int personId)
