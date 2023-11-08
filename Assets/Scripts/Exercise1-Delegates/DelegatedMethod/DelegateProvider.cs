@@ -1,16 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+
+public delegate void DelegateGiveSecret(string secret);
 
 public class DelegateProvider : MonoBehaviour
 {
     [SerializeField] private DelegateConsumer consumer;
 
+    public DelegateGiveSecret giveSecret;
+
+    private void Start()
+    {
+        giveSecret = LogSecret;
+    }
+
     [ContextMenu("Test logic consumption")]
     private void TestLogicConsumption()
     {
-        //TODO: Add the parameter here to handle the secret.
-        //You can log the value to test it :)
-        consumer.ConsumeDelegate(/*Add giveSecret method*/);
+        consumer.ConsumeDelegate(giveSecret);
+    }
+
+    private void LogSecret(string secret)
+    {
+        Console.WriteLine(secret);
     }
 }
